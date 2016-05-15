@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="{{ url_for('logout') }} ">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">ISO-100 Stock Web Application</h3>
+        </div>
+ 
+        <div class="jumbotron">
+            <h2>Page Not Found!</h2>
+ 
+        </div>
+ 
+ 
+        <footer class="footer">
+            
+            <p><img src={{ url_for('static', filename = 'ISO100.jpg') }} alt="ISO 100" height="100px">&copy; ISO-100 2016</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+
+{% endblock %}

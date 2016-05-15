@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript" class="init">
+	
+    $(document).ready(function() {
+    $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+        $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+    } );
+     
+    $('#table1').DataTable( {
+        ajax:           '/mysqltojson',
+    } );
+ 
+    $('#table2').DataTable( {
+        ajax:           '/mysqltojson2',
+        scrollCollapse: true,
+        autoWidth: false,
+        columnDefs: [
+            { width: '10%', targets: 0 },
+            { width: '10%', targets: 1 },
+            { width: '10%', targets: 2 },
+            { width: '10%', targets: 3 },
+            { width: '10%', targets: 4 },
+            { width: '10%', targets: 5 },
+            { width: '10%', targets: 6 },
+            { width: '10%', targets: 7 },
+            { width: '10%', targets: 8 },
+            { width: '15%', targets: 9 }
+        ]
+        
+    } );
+    
+    $('#table3').DataTable( {
+        ajax:           '/mysqltojson3',
+        scrollCollapse: true,
+        autoWidth: false,
+        columnDefs: [
+            { width: '5%', targets: 0 },
+            { width: '10%', targets: 1 },
+            { width: '10%', targets: 2 },
+            { width: '5%', targets: 7 },
+            { width: '5%', targets: 8 },
+            { width: '5%', targets: 9 },
+            { width: '10%', targets: 12 }
+        ]
+    } );
+    
+    $('#table4').DataTable( {
+        ajax:           '/mysqltojson4',
+        scrollCollapse: true,
+        autoWidth: false,
+        columnDefs: [
+            { width: '7%', targets: 0 },
+            { width: '10%', targets: 1 },
+            { width: '5%', targets: 2 },
+            { width: '10%', targets: 3 },
+            { width: '10%', targets: 4 }
+        ]
+    } );
+    
+    $('#table5').DataTable( {
+        ajax:           '/mysqltojson5',
+        scrollCollapse: true,
+        autoWidth: false,
+        columnDefs: [
+            { width: '7%', targets: 0 },
+            { width: '10%', targets: 1 }
+        ]
+    } );
+    
+    $('#table6').DataTable( {
+        ajax:           '/mysqltojson6',
+        scrollCollapse: true,
+        autoWidth: false,
+        columnDefs: [
+            { width: '7%', targets: 0 },
+            { width: '10%', targets: 1 }
+        ]
+    } );
+    
+} );
+      
+</script>
+
+
+<body>
+    <div class="container">
+        <div class="header">
+            <nav>
+                
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" ><a href="/">Welcome Back, {{username}}!</a></li>
+                    <li role="presentation" class="active"><a href="{{ url_for('logout') }} ">Logout</a></li>
+                    
+                    
+                </ul>
+            </nav>
+            <h3 class="text-muted">ISO-100 Stock Web Application</h3>
+        </div>
+ 
+        <div class="jumbotron">
+            <h3>{{ username }}，你好，这是ISO100团队开发的Demo版本的选股软件，本软件从各大金融网站获取股票基本面数据，并进行一些的基本分析，适合对A股进行初步的筛选工作。</h3>
+ 
+        </div>
+    
+        <div>
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="active">
+					<a href="#tab-table1" data-toggle="tab">股票列表</a>
+				</li>
+				<li>
+					<a href="#tab-table2" data-toggle="tab">股票价格</a>
+				</li>
+				<li>
+					<a href="#tab-table3" data-toggle="tab">季度报</a>
+				</li>
+				<li>
+					<a href="#tab-table4" data-toggle="tab">业绩预告</a>
+				</li>
+				<li>
+					<a href="#tab-table5" data-toggle="tab">EPS预测</a>
+				</li>
+				<li>
+					<a href="#tab-table6" data-toggle="tab">EPS计算</a>
+				</li>
+			</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab-table1">
+						<table id="table1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+                                <tr>
+                                    <th>股票代码</th>
+                                    <th>股票名称</th>
+                                </tr>
+                            </thead>
+						</table>
+					</div>
+					<div class="tab-pane" id="tab-table2">
+						<table id="table2" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>代码</th>
+                                    <th>名称</th>
+                                    <th>今日开盘价</th>
+                                    <th>昨日收盘价</th>
+                                    <th>当前价格</th>
+                                    <th>今日最高价</th>
+                                    <th>今日最低价</th>
+                                    <th>成交股票数</th>
+                                    <th>成交金额</th>
+                                    <th>日期</th>
+                                    <th>时间</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="tab-pane" id="tab-table3">
+    					<table id="table3" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    						<thead>
+    							<tr>
+    								<th>代码</th>
+                                    <th>名称</th>
+                                    <th>批漏日期</th>
+                                    <th>每股收益</th>
+                                    <th>营业收入（万）</th>
+                                    <th>同比</th>
+                                    <th>净利润（万）</th>
+                                    <th>同比</th>
+                                    <th>每股净资产（万）</th>
+                                    <th>净资产收益率</th>
+                                    <th>每股现金流</th>
+                                    <th>毛利率</th>
+                                    <th>期数</th>
+    							</tr>
+    						</thead>
+    					</table>
+					</div>
+					<div class="tab-pane" id="tab-table4">
+    					<table id="table4" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    						<thead>
+    							<tr>
+    								<th>代码</th>
+                                    <th>名称</th>
+                                    <th>类型</th>
+                                    <th>公告日期</th>
+                                    <th>报告期</th>
+                                    <th>业绩预告摘要</th>
+                                    <th>上年同期每股收益</th>
+                                    <th>业绩增幅</th>
+    							</tr>
+    						</thead>
+    					</table>
+					</div>
+					<div class="tab-pane" id="tab-table5">
+    					<table id="table5" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    						<thead>
+    							<tr>
+    								<th>代码</th>
+                                    <th>名称</th>
+                                    <th>15年EPS</th>
+                                    <th>16年EPS</th>
+                                    <th>17年EPS</th>
+                                    <th>18年EPS</th>
+                                    <th>报告日期</th>
+                                    <th>研究机构</th>
+                                    <th>研究员</th>
+    							</tr>
+    						</thead>
+    					</table>
+					</div>
+					<div class="tab-pane" id="tab-table6">
+    					<table id="table6" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    						<thead>
+    							<tr>
+    								<th>代码</th>
+                                    <th>名称</th>
+                                    <th>15年EPS</th>
+                                    <th>16年EPS</th>
+                                    <th>17年EPS</th>
+                                    <th>18年EPS</th>
+                                    <th>15~16增长</th>
+                                    <th>16~17增长</th>
+                                    <th>17~18增长</th>
+                                    <th>平均增长率</th>
+                                    <th>复合增长率</th>
+                                    <th>机构预测PE</th>
+                                    <th>机构预测PEG</th>
+                                    <th>目标价位</th>
+    							</tr>
+    						</thead>
+    					</table>
+					</div>
+				
+				</div>
+		</div>
+        
+        <footer class="footer">
+            <img src={{ url_for('static', filename = 'ISO100.jpg') }} alt="ISO 100" height="100px">
+            <p>&copy; ISO-100 2016</p>
+        </footer>
+    </div>
+    
+    
+</body>
+ 
+
+{% endblock %}

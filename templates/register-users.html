@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript" class="init">
+	
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "ajax": '/mysqltojson'
+        } );
+    } );
+</script>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="{{ url_for('logout') }} ">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">ISO-100 Stock Web Application</h3>
+        </div>
+ 
+        <div class="jumbotron">
+            <h2>Hello {{ username }}, this is the Stock List</h2>
+ 
+        </div>
+    
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Stock ID</th>
+                    <th>Stock Name</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Stock ID</th>
+                    <th>Stock Name</th>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <footer class="footer">
+            <img src={{ url_for('static', filename = 'ISO100.jpg') }} alt="ISO 100" height="100px">
+            <p>&copy; ISO-100 2016</p>
+        </footer>
+    </div>
+    
+    
+</body>
+ 
+
+{% endblock %}

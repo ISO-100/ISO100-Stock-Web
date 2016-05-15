@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
+"></script>;
+<script type="text/javascript" >
+    $(document).ready(function()
+    {
+    
+    $(".account").click(function()
+    {
+    var X=$(this).attr('id');
+    if(X==1)
+    {
+    $(".submenu").hide();
+    $(this).attr('id', '0'); 
+    }
+    else
+    {
+    $(".submenu").show();
+    $(this).attr('id', '1');
+    }
+    
+    });
+    
+    //Mouse click on sub menu
+    $(".submenu").mouseup(function()
+    {
+    return false
+    });
+    
+    //Mouse click on my account link
+    $(".account").mouseup(function()
+    {
+    return false
+    });
+    
+    
+    //Document Click
+    $(document).mouseup(function()
+    {
+    $(".submenu").hide();
+    $(".account").attr('id', '');
+    });
+    });
+</script>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <nav>
+                
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" ><a href="/">Welcome Back, {{username}}!</a></li>
+                    <li role="presentation" class="active"><a href="{{ url_for('logout') }} ">Logout</a></li>
+                </ul>
+                
+                <div class="dropdown">
+                <a class="account" >Hello, {{username}}</a>
+                <div class="submenu">
+                    <ul class="root">
+                        <li ><a href="#Dashboard" >Dashboard</a></li>
+                        <li ><a href="#Profile" >Profile</a></li>
+                        <li ><a href="#settings">Settings</a></li>
+                        <li ><a href="#feedback">Send Feedback</a></li>
+                    </ul>
+                </div>
+            
+            </div>
+            </nav>
+            
+            <h3 class="text-muted">ISO-100 Stock Web Application</h3>
+        </div>
+ 
+        <div class="jumbotron">
+            <h3>{{ username }}，你好，这是ISO100团队开发的Demo版本的选股软件，本软件从各大金融网站获取股票基本面数据，并进行一些的基本分析，适合对A股进行初步的筛选工作。</h3>
+ 
+        </div>
+    
+        
+        <footer class="footer">
+            <img src={{ url_for('static', filename = 'ISO100.jpg') }} alt="ISO 100" height="100px">
+            <p>&copy; ISO-100 2016</p>
+        </footer>
+    </div>
+    
+    
+</body>
+ 
+
+{% endblock %}
