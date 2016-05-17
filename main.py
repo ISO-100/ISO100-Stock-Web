@@ -190,16 +190,9 @@ if __name__ == "__main__":
     
     #mysql
     mysql = MySQL()
-    app.config['MYSQL_DATABASE_USER'] = os.getenv('C9_USER')
-    #print os.getenv('C9_USER')
-    app.config['MYSQL_DATABASE_PASSWORD'] = ''
-    app.config['MYSQL_DATABASE_DB'] = 'ISO100_STOCK'
-    app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-    #app.config['MYSQL_DATABASE_CHARSET'] = 'utf-8'
+    app.config.from_object('settings')
     mysql.init_app(app)
     
-    #get_server_data()
-    
-    app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)))
+    app.run(host=os.getenv('IP', '0.0.0.0'),port=int(app.config['HTTP_PORT']))
     
     
