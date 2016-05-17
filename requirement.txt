@@ -7,3 +7,4 @@ flask-migrate
 py-bcrypt
 passlib
 beautifulsoup4
+flask-mysql

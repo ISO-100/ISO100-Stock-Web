@@ -86,7 +86,7 @@ def register():
             remark = "Checkpoint 3"
             conn = mysql.connect()
             cursor = conn.cursor()
-            x = cursor.execute("SELECT * FROM USER WHERE username = (%s)", (username))
+            x = cursor.execute("SELECT * FROM USER WHERE username = '%s'", (username))
             remark = "Checkpoint 4"
             if int(x) > 0:
                 remark = "This username is existed, please choose another one."
