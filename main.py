@@ -16,6 +16,11 @@ from functools import wraps
 
 app = Flask(__name__)
 
+#mysql
+mysql = MySQL()
+app.config.from_object('settings')
+mysql.init_app(app)
+
 def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
