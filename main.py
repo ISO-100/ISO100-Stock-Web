@@ -194,9 +194,9 @@ if __name__ == "__main__":
     app.logger.addHandler(handler)
     
     #mysql
-    mysql = MySQL()
-    app.config.from_object('settings')
-    mysql.init_app(app)
+    #mysql = MySQL()
+    #app.config.from_object('settings')
+    #mysql.init_app(app)
     
     app.run(host=os.getenv('IP', '0.0.0.0'),port=int(app.config['HTTP_PORT']))
     
