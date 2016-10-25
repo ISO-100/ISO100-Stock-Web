@@ -171,6 +171,16 @@ def mysqltojson6():
     tupletodic = { "data" : [[x[0], x[1], RMB_code + str(x[2]), RMB_code + str(x[3]), RMB_code + str(x[4]), RMB_code + str(x[5]), str('{0:.3g}'.format(x[6]*100)) + '%', str('{0:.3g}'.format(x[7]*100)) + '%',str('{0:.3g}'.format(x[8]*100)) + '%', str('{0:.3g}'.format(x[9]*100)) + '%', str('{0:.3g}'.format(x[10]*100)) + '%', x[11], x[12], RMB_code + str(x[13])] for x in results] }
     return jsonify(tupletodic)
 
+@app.route("/mysqltojson7")
+def mysqltojson7():
+    c = mysql.connect().cursor()
+    c.execute("SELECT * FROM rst_stk_flt")
+    results = c.fetchall()
+    RMB_code = '\xef\xbf\xa5'
+    RMB_code = RMB_code.decode("utf8")
+    tupletodic = { "data" : [[x[0], x[1], RMB_code + str(x[2]), x[3], x[4], RMB_code + str(x[5])] for x in results] }
+    return jsonify(tupletodic)
+    
 @app.route("/multi_tab")
 def multi_tab():
     return render_template("multi_tab.html")
