@@ -97,6 +97,17 @@
         ]
     } );
     
+    $('#table8').DataTable( {
+        ajax:           '/mysqltojson8',
+        "iDisplayLength": 25,
+        scrollCollapse: true,
+        autoWidth: false,
+        columnDefs: [
+            { width: '7%', targets: 0 },
+            { width: '10%', targets: 1 }
+        ]
+    } );
+    
 } );
       
 </script>
@@ -144,6 +155,10 @@
 				</li>
 				<li>
 					<a href="#tab-table7" data-toggle="tab">股票信息总览(Demo)</a>
+				</li>
+				
+				<li>
+					<a href="#tab-table8" data-toggle="tab">业绩计算</a>
 				</li>
 				
 			</ul>
@@ -267,6 +282,31 @@
                                     <th>机构预测PE</th>
                                     <th>机构预测PEG</th>
                                     <th>目标价位</th>
+    							</tr>
+    						</thead>
+    					</table>
+					</div>
+					
+					<div class="tab-pane" id="tab-table8">
+    					<table id="table8" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    						<thead>
+    							<tr>
+    								<th>代码</th>
+                                    <th>名称</th>
+                                    <th>幅度下限</th>
+                                    <th>幅度上限</th>
+                                    <th>幅度平均值</th>
+                                    <th>差异</th>
+                                    <th>告警</th>
+                                    <th>去年全年利润</th>
+                                    <th>去年EPS</th>
+                                    <th>今年全年利润下限</th>
+                                    <th>今年全年利润上限</th>
+                                    <th>今年EPS下限</th>
+                                    <th>今年EPS上限</th>
+                                    <th>目标价位下限</th>
+                                    <th>目标价位上限</th>
+                                    <th>目标价位区间</th>
     							</tr>
     						</thead>
     					</table>
