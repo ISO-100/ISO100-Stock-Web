@@ -108,6 +108,17 @@
         ]
     } );
     
+    $('#table9').DataTable( {
+        ajax:           '/mysqltojson9',
+        "iDisplayLength": 25,
+        scrollCollapse: true,
+        autoWidth: false,
+        columnDefs: [
+            { width: '7%', targets: 0 },
+            { width: '10%', targets: 1 }
+        ]
+    } );
+    
 } );
       
 </script>
@@ -159,6 +170,10 @@
 				
 				<li>
 					<a href="#tab-table8" data-toggle="tab">业绩计算</a>
+				</li>
+				
+				<li>
+					<a href="#tab-table9" data-toggle="tab">股本</a>
 				</li>
 				
 			</ul>
@@ -307,6 +322,19 @@
                                     <th>目标价位下限</th>
                                     <th>目标价位上限</th>
                                     <th>目标价位区间</th>
+    							</tr>
+    						</thead>
+    					</table>
+					</div>
+					
+					<div class="tab-pane" id="tab-table9">
+    					<table id="table9" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    						<thead>
+    							<tr>
+    								<th>代码</th>
+                                    <th>名称</th>
+                                    <th>总股本(万股)</th>
+                                    <th>变动时间</th>
     							</tr>
     						</thead>
     					</table>
