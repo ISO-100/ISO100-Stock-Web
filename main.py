@@ -178,7 +178,7 @@ def mysqltojson7():
     results = c.fetchall()
     RMB_code = '\xef\xbf\xa5'
     RMB_code = RMB_code.decode("utf8")
-    tupletodic = { "data" : [[x[0], x[1], RMB_code + str(x[2]), str('{0:.3g}'.format(x[3]*100)) + '%', x[4], x[5], RMB_code + str(x[6])] for x in results] }
+    tupletodic = { "data" : [[x[0], x[1], str('{0:.4g}'.format(x[2]*100)) + '%', RMB_code + str(x[3]), RMB_code + str(x[4]), str('{0:.3g}'.format(x[5]*100)) + '%', x[6], x[7], RMB_code + str(x[8])] for x in results] }
     return jsonify(tupletodic)
     
 @app.route("/mysqltojson8")
