@@ -1,6 +1,9 @@
 # ISO100-Stock-Web
 Web application for ISO100 Stock - By ISO100 团队
 这是一个基于Flask编写的轻量级Web系统，主要是将后台脚本对各大财经网站的数据抓取进行页面的显示。
+
+现在在AWS上运行了基于这个版本的[Demo](http://lb-iso100-stock-507263124.ap-northeast-1.elb.amazonaws.com/)(目前阶段会进行不定时关机)
+
 主要的内容包含了：
 * 股票列表
 * 股票价格
