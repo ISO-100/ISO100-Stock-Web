@@ -178,7 +178,8 @@ def mysqltojson7():
     results = c.fetchall()
     RMB_code = '\xef\xbf\xa5'
     RMB_code = RMB_code.decode("utf8")
-    tupletodic = { "data" : [[x[0], x[1], str('{0:.4g}'.format(x[2]*100)) + '%', RMB_code + str(x[3]), RMB_code + str(x[4]), str('{0:.3g}'.format(x[5]*100)) + '%', x[6], x[7], RMB_code + str(x[8])] for x in results] }
+    #tupletodic = { "data" : [[x[0], x[1], x[2], x[3], x[4], x[5], RMB_code + str(x[6]),str('{0:.4g}'.format(x[7]*100)) + '%',x[8],RMB_code + str(x[9]), str('{0:.4g}'.format(x[10]*100)) + '%', RMB_code + str(x[11]), RMB_code + str(x[12]), str('{0:.3g}'.format(x[13]*100)) + '%', x[14], x[15], RMB_code + str(x[16])] for x in results] }
+    tupletodic = { "data" : [[x[0], x[1], RMB_code + str(x[2]), RMB_code + str(x[3]),x[4],x[5], RMB_code + str(x[6]), str('{0:.4g}'.format(x[7]*100)) + '%', x[8], RMB_code + str(x[9]), str('{0:.4g}'.format(x[10]*100)) + '%', x[11], RMB_code + str(x[12]), str('{0:.4g}'.format(x[13]*100)) + '%', x[14],x[15], RMB_code + str(x[16]) ] for x in results] }
     return jsonify(tupletodic)
     
 @app.route("/mysqltojson8")

@@ -89,6 +89,7 @@
     $('#table7').DataTable( {
         ajax:           '/mysqltojson7',
         "iDisplayLength": 25,
+        "scrollX": true,
         scrollCollapse: true,
         autoWidth: false,
         columnDefs: [
@@ -308,10 +309,19 @@
     						    <tr>
                                     <th rowspan="2">代码</th>
                                     <th rowspan="2">名称</th>
+                                    <th rowspan="2">股价</th>
+                                    <th rowspan="2">总市值(亿元)</th>
+                                    <th rowspan="2">行业分</th>
+                                    <th rowspan="2">行业</th>
+                                    <th colspan="4">季度报计算</th>
                                     <th colspan="2">业绩计算</th>
                                     <th colspan="5">EPS计算</th>
                                 </tr>
     							<tr>
+    							    <th>财报预测EPS</th>
+                                    <th>季报利润增加同比</th>
+                                    <th>季报预测PE</th>
+                                    <th>目标价位(TBD)</th>
     							    <th>增长幅度平均值</th>
                                     <th>目标价位区间(TBD)</th>
                                     <th>16年EPS</th>
