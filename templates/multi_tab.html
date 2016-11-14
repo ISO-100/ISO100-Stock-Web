@@ -132,6 +132,17 @@
         ]
     } );
     
+    $('#table11').DataTable( {
+        ajax:           '/mysqltojson11',
+        "iDisplayLength": 25,
+        scrollCollapse: true,
+        autoWidth: false,
+        columnDefs: [
+            { width: '7%', targets: 0 },
+            { width: '10%', targets: 1 }
+        ]
+    } );
+    
 } );
       
 </script>
@@ -168,7 +179,9 @@
 				<li>
 					<a href="#tab-table2" data-toggle="tab">股票价格</a>
 				</li>
-				
+				<li>
+					<a href="#tab-table11" data-toggle="tab">行业分类(New)</a>
+				</li>
 				
 				<li>
 					<a href="#tab-table3" data-toggle="tab">季度报</a>
@@ -419,6 +432,20 @@
                                     <th>季报利润增加同比</th>
                                     <th>季报预测PE</th>
                                     <th>目标价位(TBD)</th>
+    							</tr>
+    						</thead>
+    					</table>
+					</div>
+					
+					<div class="tab-pane" id="tab-table11">
+    					<table id="table11" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    						<thead>
+    							<tr>
+    								<th>代码</th>
+                                    <th>名称</th>
+                                    <th>行业分类</th>
+                                    <th>PE</th>
+                                    <th>行业PE</th>
     							</tr>
     						</thead>
     					</table>

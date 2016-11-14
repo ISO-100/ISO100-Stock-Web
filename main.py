@@ -211,6 +211,16 @@ def mysqltojson10():
     RMB_code = RMB_code.decode("utf8")
     tupletodic = { "data" : [[x[0], x[1], RMB_code + str("{:,}".format(int(x[2]))), RMB_code + str("{:,}".format(int(x[3]))), str('{0:.4g}'.format(x[4]*100)) + '%',RMB_code + str("{:,}".format(int(x[5]))), RMB_code + str("{:,}".format(int(x[6]))), str('{0:.4g}'.format(x[7]*100)) + '%', RMB_code + str("{:,}".format(int(x[8]))), RMB_code + str("{:,}".format(int(x[9]))),str('{0:.4g}'.format(x[10]*100)) + '%', RMB_code + str("{:,}".format(int(x[11]))), RMB_code + str("{:,}".format(int(x[12]))), str('{0:.4g}'.format(x[13]*100)) + '%', RMB_code + str("{:,}".format(int(x[14]))),RMB_code + str("{:,}".format(int(x[15]))), str('{0:.4g}'.format(x[16]*100)) + '%', RMB_code + str("{:,}".format(int(x[17]))), RMB_code + str("{:,}".format(int(x[18]))), str('{0:.4g}'.format(x[19]*100)) + '%',RMB_code + str("{:,}".format(int(x[20]))), RMB_code + str("{:,}".format(int(x[21]))), str('{0:.4g}'.format(x[22]*100)) + '%', RMB_code + str("{:,}".format(int(x[23]))), RMB_code + str("{:,}".format(int(x[24]))),RMB_code + str("{:,}".format(int(x[25]))), RMB_code + str("{:,}".format(int(x[26]))), RMB_code + str(x[27]), str('{0:.4g}'.format(x[28]*100)) + '%', x[29], RMB_code + str(x[30]) ] for x in results] }
     return jsonify(tupletodic)    
+    
+@app.route("/mysqltojson11")
+def mysqltojson11():
+    c = mysql.connect().cursor()
+    c.execute("SELECT * FROM stk_idt")
+    results = c.fetchall()
+    RMB_code = '\xef\xbf\xa5'
+    RMB_code = RMB_code.decode("utf8")
+    tupletodic = { "data" : [[x[0], x[1], x[2], x[3], x[4] ] for x in results] }
+    return jsonify(tupletodic)  
 
 @app.route("/multi_tab")
 def multi_tab():

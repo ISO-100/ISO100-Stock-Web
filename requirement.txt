@@ -8,3 +8,6 @@ py-bcrypt
 passlib
 beautifulsoup4
 flask-mysql
+lxml
+pandas
+tushare
